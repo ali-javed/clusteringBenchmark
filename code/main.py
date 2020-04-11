@@ -20,6 +20,7 @@ warnings.filterwarnings('ignore')
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import KMeans
 from skfuzzy.cluster import cmeans
+from KMedoids import *
 
 
 def rand_index_score(clusters, classes):
@@ -57,9 +58,9 @@ for i in ind:
 
 for num_runs in range(0,1):
 
-    output_fn = '../output/scores'+str(num_runs)+'.csv'
+    output_fn = '../output/Agglomerative_single_scores'+str(num_runs)+'.csv'
     fout = open(output_fn, "w")
-    fieldnames=['dataset','adjusted Mutual Information', 'adjusted Rand index', 'Homogeneity',
+    fieldnames=['dataset','adjusted Mutual information', 'adjusted Rand index', 'Homogeneity',
                              'Completeness', 'Fowlkes Mallows', 'Rand index']
     csvw = csv.DictWriter(fout,fieldnames = fieldnames )
 
@@ -131,7 +132,7 @@ for num_runs in range(0,1):
             #switch clustering algorithms here
             
             #Agglomerative
-            clustering = AgglomerativeClustering(n_clusters=k).fit(data)
+            clustering = AgglomerativeClustering(n_clusters=k, linkage='complete').fit(data)
             labels = clustering.labels_
             
             #Kmeans (Euclidean)
@@ -141,6 +142,9 @@ for num_runs in range(0,1):
             #Fuzzy c-means
             #cntr, u, u0, dat, jm, p, fpc  = cmeans(np.transpose(data), c=k, m=2, error = 0.005, maxiter=100, init=None, seed=None)
             #labels = np.argmax(u, axis=0)
+            
+            #Kmedoids
+            #labels, sse_all, j, closest_observations_prev = Kmedoids(timeseries, k, max_iter, window_size)
             
             
             
