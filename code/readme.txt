@@ -5,7 +5,7 @@ Eight clustering methods.
 2. Kmeans (Euclidean). (included)
 3. Fuzzy C-means (Euclidean). (included)
 4. K-medoids (Euclidean). (included)
-5. K-medoids (DTW). (in progress)
+5. K-medoids (DTW). (included)
 
 
 Source for remaining three algorithms can be downloading from respective authors websites:
